@@ -23,17 +23,14 @@ namespace AnalyticsXML
                     Year = Convert.ToInt32((string)x.Element("YEAR"))
                 }).ToList();
 
-            int minYear = cds.Min(x => x.Year);
-            int maxYear = cds.Max(x => x.Year);
-            int cdsCount = cds.Count();
-            double sum = cds.ToArray().Sum(x => x.Price);
+           
 
             Analytics analytics = new Analytics
             {
-                CdsCount = cdsCount,
-                PricesSum = sum,
-                MinYear = minYear,
-                MaxYear = maxYear,
+                CdsCount = cds.Count(),
+                PricesSum = cds.ToArray().Sum(x => x.Price),
+                MinYear = cds.Min(x => x.Year),
+                MaxYear = cds.Max(x => x.Year),
                 Artists = cds.Select(x => x.Artist).Distinct().ToList(),
                 Companies = cds.Select(x => x.Company).Distinct().ToList(),
                 Countries = cds.Select(x => x.Country).Distinct().ToList(),
