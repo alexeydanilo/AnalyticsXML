@@ -34,10 +34,10 @@ namespace AnalyticsXML
                 PricesSum = sum,
                 MinYear = minYear,
                 MaxYear = maxYear,
-                Artists = cds.Select(x => x.Artist).ToList(),
-                Companies = cds.Select(x => x.Company).ToList(),
-                Countries = cds.Select(x => x.Country).ToList(),
-                Titles = cds.Select(x => x.Title).ToList()
+                Artists = cds.Select(x => x.Artist).Distinct().ToList(),
+                Companies = cds.Select(x => x.Company).Distinct().ToList(),
+                Countries = cds.Select(x => x.Country).Distinct().ToList(),
+                Titles = cds.Select(x => x.Title).Distinct().ToList()
             };
             JsonSerializerOptions options = new JsonSerializerOptions
             {
